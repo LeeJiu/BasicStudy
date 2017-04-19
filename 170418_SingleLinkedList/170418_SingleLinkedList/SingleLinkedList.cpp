@@ -20,7 +20,7 @@ Node * SingleLinkedList::CreateNode(int data)
 	return pNew;
 }
 
-void SingleLinkedList::AddNode(int data)
+void SingleLinkedList::AddLastNode(int data)
 {
 	//노드를 생성한다.
 	Node* node = CreateNode(data);
@@ -40,6 +40,22 @@ void SingleLinkedList::AddNode(int data)
 	}
 
 	tail->pNext = node;
+}
+
+void SingleLinkedList::AddFirstNode(int data)
+{
+	//노드를 생성한다.
+	Node* node = CreateNode(data);
+
+	//빈 리스트이면 / 헤드가 null이면
+	if (m_pHead == nullptr)
+	{
+		m_pHead = node;
+		return;
+	}
+
+	node->pNext = m_pHead;
+	m_pHead = node;
 }
 
 bool SingleLinkedList::InsertNode(Node * pre, int data)

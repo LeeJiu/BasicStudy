@@ -6,12 +6,21 @@ int main()
 {
 	SingleLinkedList* list = new SingleLinkedList;
 	
-	std::cout << "1 ~ 10까지의 숫자를 리스트에 넣습니다." << std::endl;
+	std::cout << "1 ~ 10까지의 숫자를 순서대로 리스트에 넣습니다." << std::endl;
 	
 	for (int i = 0; i < 10; ++i)
 	{
-		list->AddNode(i + 1);
+		list->AddLastNode(i + 1);
 	}
+	list->PrintDataAll();
+
+	std::cout << std::endl;
+
+
+
+	std::cout << "리스트의 맨 앞에 데이터 77을 추가합니다." << std::endl;
+	list->AddFirstNode(77);
+
 	list->PrintDataAll();
 
 	std::cout << std::endl;

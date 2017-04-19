@@ -17,7 +17,8 @@ public:
 	~SingleLinkedList();
 
 	Node* CreateNode(int data);
-	void AddNode(int data);
+	void AddLastNode(int data);
+	void AddFirstNode(int data);
 	bool InsertNode(Node* pre, int data);
 	bool DeleteNode(Node* node);
 	Node* SearchNode(int data);
