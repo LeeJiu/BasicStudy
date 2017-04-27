@@ -73,5 +73,8 @@ int main()
 	list->DeleteNode(search);
 	list->InsertNode(search, 15);
 
+
+	delete list;
+
 	return 0;
 }
