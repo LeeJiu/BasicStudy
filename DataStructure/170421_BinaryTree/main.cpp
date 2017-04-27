@@ -12,13 +12,14 @@ int main()
 	tree->AddNode(2); // 중복 데이터 삽입 시도
 	tree->AddNode(1);
 	tree->AddNode(9);
+	tree->AddNode(10);
 
 	tree->PrintTree();
 	std::cout << std::endl;
 
 
 
-	tree->Delete(5);
+	tree->Delete(8);
 
 	tree->PrintTree();
 	std::cout << std::endl;

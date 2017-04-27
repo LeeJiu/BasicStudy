@@ -95,18 +95,32 @@ bool BinarySearchTree::Delete(int data)
 	//차수가 1일 때
 	else if (node->pLChild == nullptr || node->pRChild == nullptr)
 	{
+		Node* parent = node->pParent;
+		
 		if (node->pLChild != nullptr)
 		{
-			node->nData = node->pLChild->nData;
-			delete node->pLChild;
-			node->pLChild = nullptr;
+			if (parent->pLChild == node)
+			{
+				parent->pLChild = node->pLChild;
+			}
+			else if (parent->pRChild == node)
+			{
+				parent->pRChild = node->pLChild;
+			}
 		}
 		else if (node->pRChild != nullptr)
 		{
-			node->nData = node->pRChild->nData;
-			delete node->pRChild;
-			node->pRChild = nullptr;
+			if (parent->pLChild == node)
+			{
+				parent->pLChild = node->pRChild;
+			}
+			else if (parent->pRChild == node)
+			{
+				parent->pRChild = node->pRChild;
+			}
 		}
+		delete node;
+		node = nullptr;
 	}
 	//차수가 2일 때
 	else
