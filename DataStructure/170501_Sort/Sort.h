@@ -5,6 +5,7 @@ class Sort
 {
 private:
 	int* pArr;
+	int* pMergeArr;
 	int nArrNum;
 
 public:
@@ -25,5 +26,9 @@ public:
 	// Shell Sort
 	bool ShellSort(int arr[], int num);
 	void IntervalSort(int arr[], int i, int num, int interval);
+
+	// Merge Sort
+	bool MergeSort(int arr[], int begin, int end);
+	void Merge(int arr[], int begin, int end);
 };
 
