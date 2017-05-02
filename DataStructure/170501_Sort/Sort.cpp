@@ -9,6 +9,7 @@ Sort::Sort()
 
 Sort::~Sort()
 {
+	delete[] pArr;
 }
 
 void Sort::InitData()
@@ -25,6 +26,8 @@ void Sort::InitData()
 	}
 
 	pArr -= nArrNum;
+
+	std::cout << std::endl;
 }
 
 void Sort::PrintData()
@@ -37,13 +40,37 @@ void Sort::PrintData()
 	}
 
 	pArr -= nArrNum;
+	
+	std::cout << std::endl;
 }
 
 void Sort::SelectSort()
 {
-	std::cout << "Select Sort" << std::endl;
+	int num = 0;
+
+	std::cout << "[ Sort List ]" << std::endl;
+	std::cout << "1. Quick Sort" << std::endl;
+	std::cout << "2. Insertion Sort" << std::endl << std::endl;
+	std::cout << "Select Sort : ";
+	std::cin >> num;
+
+	std::cout << std::endl;
+
+	switch (num)
+	{
+	case 1:
+		std::cout << "[ Quick Sort ]" << std::endl;
+		QuickSort(pArr, 0, nArrNum - 1);
+		break;
+	case 2:
+		std::cout << "[ Insertion Sort ]" << std::endl;
+		InsertionSort(pArr, nArrNum);
+		break;
+	default:
+		break;
+	}
 	
-	QuickSort(pArr, 0, nArrNum - 1);
+	
 }
 
 bool Sort::QuickSort(int arr[], int begin, int end)
@@ -93,4 +120,44 @@ int Sort::Partition(int arr[], int begin, int end)
 	arr[right] = temp;
 
 	return right;
+}
+
+bool Sort::InsertionSort(int arr[], int num)
+{
+	int j = 0;
+	bool move = false;
+
+	for (int i = 1; i < num; ++i)
+	{
+		int temp = arr[i];
+		j = i;
+
+		if (arr[j - 1] > temp)
+		{
+			move = true;
+		}
+		else
+		{
+			move = false;
+		}
+
+		while (move)
+		{
+			arr[j] = arr[j - 1];	//자리 이동
+			j--;
+
+			if (j > 0 && arr[j - 1] > temp)
+			{
+				move = true;
+			}
+			else
+			{
+				move = false;
+			}
+		}
+
+		arr[j] = temp;
+	}
+
+	return true;
 }

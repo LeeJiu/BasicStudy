@@ -18,5 +18,8 @@ public:
 	// Quick Sort
 	bool QuickSort(int arr[], int begin, int end);
 	int Partition(int arr[], int begin, int end);
+
+	// Insertion Sort
+	bool InsertionSort(int arr[], int num);
 };
 
