@@ -21,5 +21,9 @@ public:
 
 	// Insertion Sort
 	bool InsertionSort(int arr[], int num);
+
+	// Shell Sort
+	bool ShellSort(int arr[], int num);
+	void IntervalSort(int arr[], int i, int num, int interval);
 };
 

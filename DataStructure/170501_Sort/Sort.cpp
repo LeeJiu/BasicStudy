@@ -50,7 +50,8 @@ void Sort::SelectSort()
 
 	std::cout << "[ Sort List ]" << std::endl;
 	std::cout << "1. Quick Sort" << std::endl;
-	std::cout << "2. Insertion Sort" << std::endl << std::endl;
+	std::cout << "2. Insertion Sort" << std::endl;
+	std::cout << "3. Shell Sort" << std::endl << std::endl;
 	std::cout << "Select Sort : ";
 	std::cin >> num;
 
@@ -65,6 +66,10 @@ void Sort::SelectSort()
 	case 2:
 		std::cout << "[ Insertion Sort ]" << std::endl;
 		InsertionSort(pArr, nArrNum);
+		break;
+	case 3:
+		std::cout << "[ Shell Sort ]" << std::endl;
+		ShellSort(pArr, nArrNum);
 		break;
 	default:
 		break;
@@ -160,4 +165,59 @@ bool Sort::InsertionSort(int arr[], int num)
 	}
 
 	return true;
+}
+
+bool Sort::ShellSort(int arr[], int num)
+{
+	int interval = num;
+
+	while (interval >= 1)
+	{
+		interval *= 0.5;		//interval을 반으로 줄인다.
+
+		for (int i = 0; i < interval; ++i)
+		{
+			IntervalSort(arr, i, num, interval);
+		}
+	}
+
+	return true;
+}
+
+void Sort::IntervalSort(int arr[], int i, int num, int interval)
+{
+	int j = 0;
+	bool move = false;
+
+	for (int idx = i + interval; idx < num; idx += interval)
+	{
+		int temp = arr[idx];
+		j = idx;
+
+		if (arr[j - interval] > temp)
+		{
+			move = true;
+		}
+		else
+		{
+			move = false;
+		}
+
+		while (move)
+		{
+			arr[j] = arr[j - interval];
+			j -= interval;
+
+			if (j > interval && arr[j - interval] > temp)
+			{
+				move = true;
+			}
+			else
+			{
+				move = false;
+			}
+		}
+
+		arr[j] = temp;
+	}
 }
