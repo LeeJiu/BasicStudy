@@ -1,4 +1,4 @@
-#include "BinarySearchTree.h"
+ï»¿#include "BinarySearchTree.h"
 
 
 
@@ -63,7 +63,7 @@ bool BinarySearchTree::InsertNode(Node* root, int data)
 	}
 	else
 	{
-		std::cout << "Áßº¹µÇ´Â µ¥ÀÌÅÍ(" << data << ")´Â ÀúÀåÇÒ ¼ö ¾ø½À´Ï´Ù." << std::endl;
+		std::cout << "ì¤‘ë³µë˜ëŠ” ë°ì´í„°(" << data << ")ëŠ” ì €ìž¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤." << std::endl;
 		return false;
 	}
 }
@@ -76,7 +76,7 @@ bool BinarySearchTree::Delete(int data)
 		return false;
 	}
 
-	//Â÷¼ö°¡ 0ÀÏ ¶§
+	//ì°¨ìˆ˜ê°€ 0ì¼ ë•Œ
 	if (node->pLChild == nullptr && node->pRChild == nullptr)
 	{
 		Node* parent = node->pParent;
@@ -92,7 +92,7 @@ bool BinarySearchTree::Delete(int data)
 			parent->pRChild = nullptr;
 		}
 	}
-	//Â÷¼ö°¡ 1ÀÏ ¶§
+	//ì°¨ìˆ˜ê°€ 1ì¼ ë•Œ
 	else if (node->pLChild == nullptr || node->pRChild == nullptr)
 	{
 		Node* parent = node->pParent;
@@ -122,12 +122,12 @@ bool BinarySearchTree::Delete(int data)
 		delete node;
 		node = nullptr;
 	}
-	//Â÷¼ö°¡ 2ÀÏ ¶§
+	//ì°¨ìˆ˜ê°€ 2ì¼ ë•Œ
 	else
 	{
-		//¿ÞÂÊ ¼­ºê Æ®¸®¿¡¼­ °¡Àå Å« °ªÀ» Ã£´Â´Ù.
+		//ì™¼ìª½ ì„œë¸Œ íŠ¸ë¦¬ì—ì„œ ê°€ìž¥ í° ê°’ì„ ì°¾ëŠ”ë‹¤.
 		Node* max = GetMaxNode(node->pLChild);
-		//Å« °ªÀ» ·çÆ® ³ëÆ®¿¡ ³Ö°í
+		//í° ê°’ì„ ë£¨íŠ¸ ë…¸íŠ¸ì— ë„£ê³ 
 		node->nData = max->nData;
 		
 		Node* parent = max->pParent;
@@ -192,12 +192,12 @@ void BinarySearchTree::PrintTree()
 {
 	if (m_pRoot == nullptr)
 	{
-		std::cout << "°ø¹é Æ®¸®ÀÔ´Ï´Ù." << std::endl;
+		std::cout << "ê³µë°± íŠ¸ë¦¬ìž…ë‹ˆë‹¤." << std::endl;
 		return;
 	}
 
 	int num = 0;
-	std::cout << "< 1 : ÀüÀ§ ¼øÈ¸, 2 : ÁßÀ§ ¼øÈ¸, 3 : ÈÄÀ§ ¼øÈ¸ >" << std::endl;
+	std::cout << "< 1 : ì „ìœ„ ìˆœíšŒ, 2 : ì¤‘ìœ„ ìˆœíšŒ, 3 : í›„ìœ„ ìˆœíšŒ >" << std::endl;
 	std::cin >> num;
 
 	switch (num)
@@ -212,7 +212,7 @@ void BinarySearchTree::PrintTree()
 		PostOrder(m_pRoot);
 		break;
 	default:
-		std::cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù." << std::endl;
+		std::cout << "ìž˜ëª»ëœ ìž…ë ¥ìž…ë‹ˆë‹¤." << std::endl;
 		break;
 	}
 

@@ -1,4 +1,4 @@
-#include "Sort.h"
+ï»¿#include "Sort.h"
 
 
 
@@ -14,7 +14,7 @@ Sort::~Sort()
 
 void Sort::InitData()
 {
-	std::cout << "Data »ğÀÔ °³¼ö : ";
+	std::cout << "Data ì‚½ì… ê°œìˆ˜ : ";
 	std::cin >> nArrNum;
 
 	pArr = new int[nArrNum];
@@ -155,7 +155,7 @@ bool Sort::InsertionSort(int arr[], int num)
 
 		while (move)
 		{
-			arr[j] = arr[j - 1];	//ÀÚ¸® ÀÌµ¿
+			arr[j] = arr[j - 1];	//ìë¦¬ ì´ë™
 			j--;
 
 			if (j > 0 && arr[j - 1] > temp)
@@ -180,7 +180,7 @@ bool Sort::ShellSort(int arr[], int num)
 
 	while (interval >= 1)
 	{
-		interval *= 0.5;		//intervalÀ» ¹İÀ¸·Î ÁÙÀÎ´Ù.
+		interval *= 0.5;		//intervalì„ ë°˜ìœ¼ë¡œ ì¤„ì¸ë‹¤.
 
 		for (int i = 0; i < interval; ++i)
 		{
@@ -255,7 +255,7 @@ void Sort::Merge(int arr[], int begin, int end)
 	j = middle + 1;
 	k = begin;
 
-	// º´ÇÕÇÒ µÎ ºÎºĞ ÁıÇÕÀ» Á¤·Ä -> Ãß°¡ÀûÀÎ ¹è¿­¿¡ Á¤·ÄµÈ µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
+	// ë³‘í•©í•  ë‘ ë¶€ë¶„ ì§‘í•©ì„ ì •ë ¬ -> ì¶”ê°€ì ì¸ ë°°ì—´ì— ì •ë ¬ëœ ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
 	while (i <= middle && j <= end)
 	{
 		if (arr[i] <= arr[j])
@@ -268,8 +268,8 @@ void Sort::Merge(int arr[], int begin, int end)
 		}
 	}
 
-	// ÇÑ ºÎºĞ ÁıÇÕÀÌ º´ÇÕ Çà·Ä¿¡ ÀüºÎ µé¾î°¡°í,
-	// ´Ù¸¥ ºÎºĞ ÁıÇÕÀÌ ´ú µé¾î°£ °æ¿ì
+	// í•œ ë¶€ë¶„ ì§‘í•©ì´ ë³‘í•© í–‰ë ¬ì— ì „ë¶€ ë“¤ì–´ê°€ê³ ,
+	// ë‹¤ë¥¸ ë¶€ë¶„ ì§‘í•©ì´ ëœ ë“¤ì–´ê°„ ê²½ìš°
 	if (i > middle)
 	{
 		for (int t = j; t <= end; ++t, ++k)
@@ -285,7 +285,7 @@ void Sort::Merge(int arr[], int begin, int end)
 		}
 	}
 
-	// Á¤·ÄµÈ ¹è¿­À» ¿ø·¡ ¹è¿­¿¡ ³Ö´Â´Ù.
+	// ì •ë ¬ëœ ë°°ì—´ì„ ì›ë˜ ë°°ì—´ì— ë„£ëŠ”ë‹¤.
 	for (int t = begin; t <= end; ++t)
 	{
 		arr[t] = pMergeArr[t];
