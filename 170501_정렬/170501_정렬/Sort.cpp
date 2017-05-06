@@ -123,7 +123,7 @@ void Sort::Merge(int arr[], int begin, int middle, int end)
 
 	i = begin;		//begin쪽 인덱스
 	j = middle + 1;	//middle부터 인덱스
-	k = begin;
+	k = begin;		//tempArray의 인덱스
 	
 	int tempArray[MAXSIZE];
 
@@ -165,6 +165,119 @@ void Sort::Merge(int arr[], int begin, int middle, int end)
 		arr[m] = tempArray[m];
 	}
 
+}
+
+void Sort::HeapSort(int arr[])
+{
+	int hTree[MAXSIZE];
+	for (int i = 0; i < MAXSIZE; i++)
+	{
+		InsertHeap(hTree, arr[i], i);
+	}
+
+	ViewHeap(hTree);
+
+	for (int i = 0; i < MAXSIZE; i++)
+	{
+		arr[i] = DeleteHeap(hTree, i);
+	}
+
+	ViewHeap(hTree);
+}
+
+void Sort::InsertHeap(int *tree, int data, int idx)
+{
+	tree[idx] = data;
+	MaxHeap(tree, idx);
+}
+
+void Sort::MaxHeap(int * tree, int idx)
+{
+	while (idx > 0)
+	{
+		if (tree[PARENT(idx)] < tree[idx])
+		{
+			int temp = tree[PARENT(idx)];
+			tree[PARENT(idx)] = tree[idx];
+			tree[idx] = temp;
+			MaxHeap(tree, PARENT(idx));
+		}
+		else return;
+	}
+}
+
+int Sort::MaxHeap2(int * tree, int idx, int endIdx)
+{ 
+	int targetIdx = 0;				//idx와 비교할 대상
+	int lastLength = endIdx - 1;	//검사할 마지막 배열의 원소
+	while (idx <= endIdx)
+	{
+		if (lastLength >= RCHILD(idx))
+		{
+			if (tree[LCHILD(idx)] > tree[RCHILD(idx)])
+			{
+				targetIdx = LCHILD(idx);
+			}
+			else targetIdx = RCHILD(idx);
+
+			if (tree[idx] < tree[targetIdx])
+			{
+				Swap(&tree[idx], &tree[targetIdx]);
+			}
+
+			//2자식 있을때
+			if (RCHILD(targetIdx) <= lastLength)
+			{
+				idx = targetIdx;
+				continue;
+			}
+		}
+		//1자식있을때
+		else if (lastLength >= LCHILD(idx))
+		{
+			if (tree[idx] < tree[LCHILD(idx)])
+			{
+				Swap(&tree[idx], &tree[LCHILD(idx)]);
+			}
+		}
+		return tree[endIdx];		//반환값은 마지막 
+	}
+}
+
+void Sort::Swap(int* data1, int* data2)
+{
+	int temp = *data1;
+	*data1 = *data2;
+	*data2 = temp;
+}
+
+int Sort::DeleteHeap(int* tree, int i)
+{
+	int result = tree[0];
+	int temp = tree[0];
+	tree[0] = tree[MAXSIZE - i - 1];
+	tree[MAXSIZE - i - 1] = temp;
+
+	if (MAXSIZE - i - 1 == 0)
+	{
+		return tree[0];
+	}
+	else
+	{
+		return MaxHeap2(tree, 0, (MAXSIZE - 1) - i);
+	}
+}
+
+void Sort::ViewHeap(int * tree)
+{
+
+	cout << "힙 트리 => ";
+
+	for (int i = 0; i < MAXSIZE; i++)
+	{
+		cout << tree[i] << " ";
+	}
+	cout << endl;
 }
 
 void Sort::PrintArr(int* arr, int size)
